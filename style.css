@@ -9,6 +9,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
+
 body {
     background-color: black;
     color: white;
@@ -45,9 +46,10 @@ section {
     background-image: radial-gradient(#7f3d9e, #6d00d9);
     height: 100vh;
     position: relative;
+    max-width: 100%;
 
     & .list {
-        width: 70vw;
+        max-width: 70vw;
         height: 100%;
         margin: auto;
         position: relative;
@@ -65,6 +67,18 @@ section {
                 & img {
                     width: 100%;
                     transform: rotate(-20deg);
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    background-color: rgba(0, 0, 0, 0.445);
+                    width: 100%;
+                    height: 100px;
+                    top: 150%;
+                    left: 50px;
+                    border: 50%;
+                    filter: blur(50px);
                 }
             }
 
@@ -212,9 +226,11 @@ section {
 
 
     & .list {
+        --calculation: 1;
+
 
         & .item {
-            transform: translateX(100vw);
+            transform: translateX(calc(100vw * var(--calculation)));
             transition: 0.5s;
             opacity: 0;
 
@@ -232,7 +248,7 @@ section {
             & .content {
 
                 & .car-information, h2, .description, .information {
-                    transform: translateX(200PX);
+                    transform: translateX(calc(200px * var(--calculation)));
                     transition: 0.7s;
                     transition-delay: 0.3s;
                     opacity: 0;
